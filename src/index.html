@@ -1,13 +1,69 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello World</title>
-  </head>
-
-  <body>
-    <h1>Hello World</h1>
-    <p>{{ response }}</p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .chat-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .chat-message {
+            margin-bottom: 10px;
+        }
+        .user-message {
+            text-align: right;
+            color: #0645AD;
+        }
+        .bot-message {
+            text-align: left;
+            color: #4CAF50;
+        }
+        .input-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .input-container input[type="text"] {
+            padding: 10px;
+            width: 60%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .input-container input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        {% for message in response %}
+            <div class="chat-message {% if message.role == 'USER' %}user-message{% else %}bot-message{% endif %}">
+                {{ message.message }}
+            </div>
+        {% endfor %}
+        <div class="input-container">
+            <form action="/" method="post">
+                <input type="text" id="user-input" name="user-input" placeholder="Enter your question...">
+                <input type="submit" value="Ask">
+            </form>
+        </div>
+    </div>
+</body>
 </html>
