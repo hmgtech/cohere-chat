@@ -39,7 +39,7 @@ Step-by-step guide on how to install and configure the project.
 1. Clone the repository:
    ```bash
     git clone https://github.com/hmgtech/cohere-chat.git
-2. cd your_project
+2. cd cohere-chat
     ```bash
     cd your_project
 3. Install dependencies:
